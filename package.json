@@ -10,8 +10,8 @@
     "build-types": "npx -p typescript tsc bundle.js --declaration --allowJs --emitDeclarationOnly"
   },
   "keywords": [
-    "react-native-component",
-    "react-native",
+    "nodejs",
+    "nextjs",
     "crash",
     "bug",
     "error",
