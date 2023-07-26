@@ -1,0 +1,27 @@
+{
+  "name": "node-capturelogger",
+  "version": "1.0.0",
+  "description": "Capturelogger for Node.js",
+  "main": "bundle.cjs",
+  "type": "module",
+  "types": "./bundle.d.ts",
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "build-types": "npx -p typescript tsc bundle.js --declaration --allowJs --emitDeclarationOnly"
+  },
+  "keywords": [
+    "react-native-component",
+    "react-native",
+    "crash",
+    "bug",
+    "error",
+    "reporting"
+  ],
+  "author": "alexanderiscoding",
+  "homepage": "https://docs.alexanderiscoding.com/package/node-capturelogger",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alexanderiscoding/npm-node-capturelogger.git"
+  }
+}
