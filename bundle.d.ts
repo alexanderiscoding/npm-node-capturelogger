@@ -1,1 +1,2 @@
-export function registerLogger(action: string, log: any, userAgent: any): void;
+declare function _default(action: string, log: any, userAgent: any): void;
+export default _default;

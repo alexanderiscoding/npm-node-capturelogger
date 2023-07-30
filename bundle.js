@@ -22,7 +22,7 @@ function send(action, log, userAgent) {
   );
 }
 
-function registerLogger(action, log, userAgent) {
+export default (action, log, userAgent) => {
   if (CaptureLogger) {
     if (String(CaptureLogger.id) && String(CaptureLogger.token) && String(CaptureLogger.source)) {
 
@@ -41,6 +41,7 @@ function registerLogger(action, log, userAgent) {
           return;
         }
       }
+
       send(action, log, userAgent);
     } else {
       console.log("CaptureLogger.id and/or CaptureLogger.token not defined in package.json");
@@ -49,5 +50,3 @@ function registerLogger(action, log, userAgent) {
     console.log({ "action": action, "log": log });
   }
 }
-
-export { registerLogger };
