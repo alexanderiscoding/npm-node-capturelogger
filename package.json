@@ -1,12 +1,11 @@
 {
   "name": "node-capturelogger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Capturelogger for Node.js",
-  "main": "bundle.cjs",
+  "main": "bundle.js",
   "type": "module",
   "types": "./bundle.d.ts",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
     "build-types": "npx -p typescript tsc bundle.js --declaration --allowJs --emitDeclarationOnly"
   },
   "keywords": [
@@ -18,7 +17,6 @@
     "reporting"
   ],
   "author": "alexanderiscoding",
-  "homepage": "https://docs.alexanderiscoding.com/package/node-capturelogger",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-const { CaptureLogger, name, version } = require('../../package.json');
+import { CaptureLogger, name, version } from '../../package.json';
 
 function send(action, log, userAgent) {
   fetch('https://cl.alexanderiscoding.com/new', {
@@ -13,7 +13,8 @@ function send(action, log, userAgent) {
       action: action,
       log: log,
       source: CaptureLogger.source ? CaptureLogger.source : name,
-      version: version
+      version: version,
+      SenderMessage: CaptureLogger.SenderMessage
     })
   }).then(
     (response) => console.log(response.status == 200 ? 'CaptureLogger: send ' + action : 'CaptureLogger: not send ' + action + ' - status code: ' + response.status)
