@@ -1,4 +1,5 @@
 import { CaptureLogger, name, version } from '../../package.json';
+import { isObj, isString, isBoolean } from './validation';
 
 function send(action, log, userAgent) {
   fetch('https://cl.alexanderiscoding.com/new', {
@@ -6,8 +7,8 @@ function send(action, log, userAgent) {
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       'User-Agent': userAgent,
-      'serviceid': CaptureLogger.id,
-      'token': CaptureLogger.token
+      'serviceid': CaptureLogger.serviceID,
+      'accesstoken': CaptureLogger.accessToken
     },
     body: JSON.stringify({
       action: action,
@@ -23,31 +24,77 @@ function send(action, log, userAgent) {
   );
 }
 
-export default (action, log, userAgent) => {
-  if (CaptureLogger) {
-    if (String(CaptureLogger.id) && String(CaptureLogger.token) && String(CaptureLogger.source)) {
-
-      if (!String(CaptureLogger.source) && !String(name)) {
+function checkConfig() {
+  if (!isObj(CaptureLogger)) {
+    console.log("CaptureLogger not configured in package.json");
+    return false;
+  } else {
+    if (!CaptureLogger.serviceID) {
+      console.log("CaptureLogger.serviceID not defined in package.json");
+      return false;
+    }
+    if (!CaptureLogger.accessToken) {
+      console.log("CaptureLogger.accessToken not defined in package.json");
+      return false;
+    }
+    if (!CaptureLogger.source) {
+      if (!name) {
         console.log("name and/or CaptureLogger.source not defined in package.json");
-        return;
+        return false;
       }
+    }
+    if (!version) {
+      console.log("version not defined in package.json");
+      return false;
+    }
+    return true;
+  }
+}
 
-      if (!String(version)) {
-        console.log("version not defined in package.json");
-        return;
+function validationConfig() {
+  if (!isString(CaptureLogger.serviceID)) {
+    console.log("CaptureLogger.serviceID invalid config in package.json");
+    return false;
+  }
+  if (!isString(CaptureLogger.accessToken)) {
+    console.log("CaptureLogger.accessToken invalid config in package.json");
+    return false;
+  }
+  if (!isString(CaptureLogger.source)) {
+    if (!CaptureLogger.source) {
+      if (!isString(name)) {
+        console.log("name invalid config in package.json");
+        return false;
       }
+    } else {
+      console.log("CaptureLogger.source invalid config in package.json");
+      return false;
+    }
+  }
+  if (!isString(version)) {
+    console.log("version invalid config in package.json");
+    return false;
+  }
+  return true;
+}
 
-      if (typeof CaptureLogger.ignore == 'object') {
-        if (CaptureLogger.ignore.includes(action)) {
+export default (action, log, userAgent) => {
+  if (checkConfig()) {
+    if (isBoolean(CaptureLogger.debug)) {
+      console.log({ "action": action, "log": log });
+    } else {
+      if (validationConfig()) {
+        if (isObj(CaptureLogger.ignore)) {
+          if (CaptureLogger.ignore.includes(action)) {
+            return;
+          }
+        }
+        if (!isString(action)) {
+          console.log("Action is not string.");
           return;
         }
+        send(action, log, userAgent);
       }
-
-      send(action, log, userAgent);
-    } else {
-      console.log("CaptureLogger.id and/or CaptureLogger.token not defined in package.json");
     }
-  } else {
-    console.log({ "action": action, "log": log });
   }
 }

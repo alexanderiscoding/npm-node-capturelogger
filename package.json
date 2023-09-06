@@ -1,6 +1,6 @@
 {
   "name": "node-capturelogger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Capturelogger for Node.js",
   "main": "bundle.js",
   "type": "module",
