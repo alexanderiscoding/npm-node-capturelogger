@@ -4,6 +4,8 @@ Um complemento para reportar logs em seus projetos Node.js.
 
 - Execute: `npm i node-capturelogger`
 
+- Ative o serviço gratuitamente em [Alexanderiscoding](https://alexanderiscoding.com) > Conectar-me > Perfil > Serviços
+
 ## Configurando o package
 
 Adicione em seu package.json as definições necessárias
@@ -14,7 +16,7 @@ Adicione em seu package.json as definições necessárias
 - `accessToken`: String | Preencha com o accessToken do CaptureLogger
 - `source`: String | Preencha com uma identificação para saber a origem do log
 - `ignore`: Object (Opcional) | Preencha com o/os `action` a ser ignorado ao enviar
-- `SenderMessage`: Number (Opcional) | `1` Telegram - `2` Discord - `3` Slack - `4` Google Chat - Para definir um serviço de mensagem especifica com o [SenderMessage](https://docs.alexanderiscoding.com/package/sendermessage)
+- `SenderMessage`: Number (Opcional) | `1` Telegram - `2` Discord - `3` Slack - `4` Google Chat - Para definir um serviço de mensagem especifica com o SenderMessage
 
 Exemplo de um package.json
 
