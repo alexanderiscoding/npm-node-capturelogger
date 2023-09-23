@@ -1,9 +1,8 @@
 {
   "name": "node-capturelogger",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Capturelogger for Node.js",
   "main": "bundle.js",
-  "type": "module",
   "types": "./bundle.d.ts",
   "scripts": {
     "build-types": "npx -p typescript tsc bundle.js --declaration --allowJs --emitDeclarationOnly"

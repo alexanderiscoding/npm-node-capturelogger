@@ -41,8 +41,6 @@ Exemplo de um package.json
 
 Importe o package na sua aplicação
 
-`import captureLogger from 'node-capturelogger';`
-
 `const captureLogger = require('node-capturelogger');`
 
 Registre os logs de evento

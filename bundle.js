@@ -1,5 +1,5 @@
-import { CaptureLogger, name, version } from '../../package.json';
-import { isObj, isString, isBoolean } from './validation';
+const { CaptureLogger, name, version } = require('../../package.json');
+const { isObj, isString, isBoolean } = require('./validation');
 
 function send(action, log, userAgent) {
   fetch('https://cl.alexanderiscoding.com/new', {
@@ -78,7 +78,7 @@ function validationConfig() {
   return true;
 }
 
-export default (action, log, userAgent) => {
+module.exports = (action, log, userAgent) => {
   if (checkConfig()) {
     if (isBoolean(CaptureLogger.debug)) {
       console.log({ "action": action, "log": log });
