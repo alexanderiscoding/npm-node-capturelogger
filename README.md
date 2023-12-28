@@ -4,7 +4,7 @@ Um complemento para reportar logs em seus projetos Node.js.
 
 - Execute: `npm i node-capturelogger`
 
-- Ative o serviço gratuitamente em [Alexanderiscoding](https://alexanderiscoding.com) > Conectar-me > Perfil > Serviços
+- Ative o serviço gratuitamente em [Alexanderiscoding](https://alexanderiscoding.com)
 
 ## Configurando o package
 
